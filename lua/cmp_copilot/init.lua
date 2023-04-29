@@ -17,6 +17,11 @@ source.complete = function(self, params, callback)
       items = vim.tbl_map(function(item)
         local prefix = string.sub(params.context.cursor_before_line, item.range.start.character + 1, item.position.character)
         return {
+          kind = 1,
+          cmp = {
+                  kind_hl_group = "CmpItemKindcopilot",
+                  kind_text = 'Copilot',
+          },
           label = prefix .. item.displayText,
           textEdit = {
             range = item.range,
